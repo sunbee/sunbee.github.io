@@ -11,13 +11,12 @@
 	<script>
 	function display_random_image() 
 	{
+		var remark = "Namaste from India!";
+
 		var appInventor = window.AppInventor; 
 		if (appInventor) {
-			var remark = window.AppInventor.getWebViewString(); 
-		} else {
-			var remark = "Namaste from India!";
-		}
-  
+			remark = [window.AppInventor.getWebViewString(), remark].join("\n\n"); 
+		} 
 		 
 		var theImages = [{
 			src: "https://purplerays.files.wordpress.com/2019/06/60678868_1056717087847357_3479005530750451712_n.jpg",
