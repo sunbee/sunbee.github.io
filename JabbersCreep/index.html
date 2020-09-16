@@ -11,8 +11,10 @@
 	<script>
 	function display_random_image() 
 	{
+		var remark = "Namaste from India!"
+		 
 		var theImages = [{
-			src: "https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/04/kailasa-main-view.jpg",
+			src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
 			width: "240",
 			height: "160",
 			caption: "The Terrific Taj Mahal!"
@@ -27,7 +29,7 @@
 			height: "343",
 			caption: "A Fabulous Farm!"
 		}];
-
+		
 		var preBuffer = [];
 		for (var i = 0, j = theImages.length; i < j; i++) {
 			preBuffer[i] = new Image();
@@ -36,7 +38,7 @@
 			preBuffer[i].height = theImages[i].height;
 			preBuffer[i].alt = theImages[i].caption;
 		}
-
+	   
 		// create random image number
 		function getRandomInt(min,max) 
 		{
@@ -47,28 +49,33 @@
 
 		// 0 is first image,   preBuffer.length - 1) is  last image
 		var newImage = getRandomInt(0, preBuffer.length - 1);
-
+	 
 		// remove the previous images
 		var images = document.getElementsByTagName('img');
 		var l = images.length;
 		for (var p = 0; p < l; p++) {
-		console.log(images[p].src)
-		images[0].parentNode.removeChild(images[0]);
-	}
+			console.log(images[p].src)
+			images[0].parentNode.removeChild(images[0]);
+		}
+	  
+		// remove the previous captions
+		var captions = document.getElementsByTagName('p');
+		while (captions.length > 0) {
+			captions[0].parentNode.removeChild(captions[0]);
+		}
 
-	// remove the previous captions
-	var captions = document.getElementsByTagName('p');
-	while (captions.length > 0) {
-	captions[0].parentNode.removeChild(captions[0]);
-	}
+		// display the image  
+		document.getElementById("Viewer").appendChild(newImage);
 
-	// display the image  
-	document.getElementById("Viewer").appendChild(newImage);
-
-	var caption = document.createElement("p");
-	var captionText = document.createTextNode(newImage.alt);
-	caption.appendChild(captionText);
-	document.getElementById("Viewer").appendChild(caption);
+		var caption = document.createElement("p");
+		var captionText = document.createTextNode(newImage.alt);
+		caption.appendChild(captionText);
+		document.getElementById("Viewer").appendChild(caption);
+	  
+		var comment = document.createElement("p");
+		var commentText = document.createTextNode(remark)
+		comment.appendChild(commentText);
+		document.getElementById("Guestbook").appendChild(comment);
 	}
 
 	</script>
