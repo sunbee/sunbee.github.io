@@ -15,7 +15,7 @@
 
 		var appInventor = window.AppInventor; 
 		if (appInventor) {
-			remark = [window.AppInventor.getWebViewString(), remark].join("\n\n"); 
+			remark = window.AppInventor.getWebViewString() + remark; 
 		} 
 		 
 		var theImages = [{
