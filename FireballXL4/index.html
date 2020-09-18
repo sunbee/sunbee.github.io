@@ -9,16 +9,35 @@
 </head>
 <body>
 	<script>
+	/*
+	Add a remark below the image in the guestbook section.
+	The default remark will be replaced by the URL
+	of the image to show as specified in AppInventor
+	with the WebViewString propert of WebViewer component.
+	*/
 	var remark = "Namaste from India!";
-	
+
+	/*
+	When the javascript is processed in AppInventor,
+	messages are exchanged by get/set methods for the 
+	WebViewString property of the WebViewer component
+	on both sides.
+	AppInventor passes the javascript the URL 
+	of the image (Bahai Lotus Temple in Delhi) to show.
+	The URL is extracted from Firebase Realtime Database
+	by authenticated an C(R)UD operation, 
+	which yields a URL enclosed in double-quotes.
+	These double-quotes must be stripped off 
+	as otherwise they become part and parcel of the string. 
+	*/
 	var appInventor = window.AppInventor; 
-	if (appInventor) {
-		remark = window.AppInventor.getWebViewString().replace(/["]+/g, ''); 
+	if (appInventor) { // Do this when js is processed in AppInventor.
+		remark = window.AppInventor.getWebViewString().replace(/["]+/g, '');
 	} 
 		 
 	function display_random_image() 
 	{
-		var theImages = [{
+		var theImages = [{ // Store images to show in an array of JSON objects.
 			src: "https://purplerays.files.wordpress.com/2019/06/60678868_1056717087847357_3479005530750451712_n.jpg",
 			width: "373",
 			height: "364",
@@ -35,7 +54,7 @@
 			caption: "The Magnificent Mangueshi Temple"
 		}];
 		
-		 if (appInventor) {
+		 if (appInventor) { // Add the image from AppInventor to the array.
 			theImages.push({
 				src: window.AppInventor.getWebViewString().replace(/["]+/g, ''),
 				width: "240",
@@ -43,7 +62,7 @@
 				caption: 'The Blooming Bahai Lotus Temple'
 			})
 		} else {
-			theImages.push({
+			theImages.push({ // Set a default and tweak the caption to disambiguate.
 			src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/LotusDelhi.jpg/240px-LotusDelhi.jpg",
 			width: "240",
 			height: "148",
@@ -88,11 +107,13 @@
 		// display the image  
 		document.getElementById("Viewer").appendChild(newImage);
 
+		// Show the caption in the placeholder under the image.
 		var caption = document.createElement("p");
 		var captionText = document.createTextNode(newImage.alt);
 		caption.appendChild(captionText);
 		document.getElementById("Viewer").appendChild(caption);
 	  
+		// Show the default message or URL via AppInventor. 
 		var comment = document.createElement("p");
 		var commentText = document.createTextNode(remark)
 		comment.appendChild(commentText);
