@@ -9,15 +9,15 @@
 </head>
 <body>
 	<script>
+	var remark = "Namaste from India!";
+	
+	var appInventor = window.AppInventor; 
+	if (appInventor) {
+		remark += window.AppInventor.getWebViewString(); 
+	} 
+		 
 	function display_random_image() 
 	{
-		var remark = "Namaste from India!";
-
-		var appInventor = window.AppInventor; 
-		if (appInventor) {
-			remark = window.AppInventor.getWebViewString() + remark; 
-		} 
-		 
 		var theImages = [{
 			src: "https://purplerays.files.wordpress.com/2019/06/60678868_1056717087847357_3479005530750451712_n.jpg",
 			width: "373",
