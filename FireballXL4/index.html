@@ -35,6 +35,22 @@
 			caption: "The Magnificent Mangueshi Temple"
 		}];
 		
+		 if (appInventor) {
+			theImages.push({
+				src: appInventor.getWebViewString(),
+				width: "240",
+				height: "148",
+				caption: 'The Blooming Bahai Lotus Temple'
+			})
+		} else {
+			theImages.push({
+			src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/LotusDelhi.jpg/240px-LotusDelhi.jpg",
+			width: "240",
+			height: "148",
+			caption: 'The Bloomin Bahai Lotus Temple'      
+			})
+		};
+		
 		var preBuffer = [];
 		for (var i = 0, j = theImages.length; i < j; i++) {
 			preBuffer[i] = new Image();
