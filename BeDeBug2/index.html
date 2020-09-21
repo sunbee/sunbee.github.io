@@ -9,13 +9,23 @@
 </head>
 <body>
 	<script>
+	/* 
+	Set serialized JSON (string) as default for testing, 
+	mimicking the string that will be passed by AppInventor 
+	via WebViewString property of WebViewer component. 
+	*/
 	var Landmark = 	'{"Image":"https://i2.wp.com/vmenvironmentalconsulting.com/wp-content/uploads/2018/01/Linnean-House.jpg","Nearby":["MagnoliaGrove","GladneyRoseGarden","OttomanGarden"],"Title":"Linnean House"}';
 
+	/*
+	Get serialized JSON from AppInventor when available,
+	otherwise continue with the default.
+	*/
 	var appInventor = window.AppInventor; 
 	if (appInventor) { // Do this when js is processed in AppInventor.
 	  Landmark = window.AppInventor.getWebViewString();
 	} 
 
+	// Vivify JSON object.
 	var LandmarkJS = JSON.parse(Landmark);
 	alert(Landmark);
 
@@ -26,32 +36,32 @@
 		bufferedImage.width = "350";
 	  
 		// remove the previous images
-			var images = document.getElementsByTagName('img');
-			var l = images.length;
-			for (var p = 0; p < l; p++) {
-				console.log(images[p].src)
-				images[0].parentNode.removeChild(images[0]);
-			}
-		  
-			// remove the previous captions
-			var captions = document.getElementsByTagName('p');
-			while (captions.length > 0) {
-				captions[0].parentNode.removeChild(captions[0]);
-			}
+		var images = document.getElementsByTagName('img');
+		var l = images.length;
+		for (var p = 0; p < l; p++) {
+			console.log(images[p].src)
+			images[0].parentNode.removeChild(images[0]);
+		}
+	  
+		// Remove the previous captions.
+		var captions = document.getElementsByTagName('p');
+		while (captions.length > 0) {
+			captions[0].parentNode.removeChild(captions[0]);
+		}
 
-			// display the image  
-			document.getElementById("Viewer").appendChild(bufferedImage);
-			// Show the caption in the placeholder under the image.
-			var caption = document.createElement("p");
-			var captionText = document.createTextNode(LandmarkJS.Title);
-			caption.appendChild(captionText);
-			document.getElementById("Viewer").appendChild(caption);
+		// Display the image.  
+		document.getElementById("Viewer").appendChild(bufferedImage);
+		// Show the caption in the placeholder under the image.
+		var caption = document.createElement("p");
+		var captionText = document.createTextNode(LandmarkJS.Title);
+		caption.appendChild(captionText);
+		document.getElementById("Viewer").appendChild(caption);
 			
-		  	// Show the default message or URL via AppInventor. 
-			var comment = document.createElement("p");
-			var commentText = document.createTextNode(Landmark)
-			comment.appendChild(commentText);
-			document.getElementById("Guestbook").appendChild(comment);
+		// Show the payload from AppInventor. 
+		var comment = document.createElement("p");
+		var commentText = document.createTextNode(Landmark)
+		comment.appendChild(commentText);
+		document.getElementById("Guestbook").appendChild(comment);
 	  
 	}	
 	</script>
