@@ -46,6 +46,12 @@
 			var captionText = document.createTextNode(LandmarkJS.Title);
 			caption.appendChild(captionText);
 			document.getElementById("Viewer").appendChild(caption);
+			
+		  	// Show the default message or URL via AppInventor. 
+			var comment = document.createElement("p");
+			var commentText = document.createTextNode(Landmark)
+			comment.appendChild(commentText);
+			document.getElementById("Guestbook").appendChild(comment);
 	  
 	}	
 	</script>
