@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Display an image.</title>
+	<style type="text/css">
+	body {margin-top: 30px;}
+	</style> 
+</head>
+<body>
+	<script>
+	var Landmark = 	'{"Image":"https://i2.wp.com/vmenvironmentalconsulting.com/wp-content/uploads/2018/01/Linnean-House.jpg","Nearby":["MagnoliaGrove","GladneyRoseGarden","OttomanGarden"],"Title":"Linnean House"}';
+
+	var appInventor = window.AppInventor; 
+	if (appInventor) { // Do this when js is processed in AppInventor.
+	  Landmark = window.AppInventor.getWebViewString();
+	} 
+
+	var LandmarkJS = JSON.parse(Landmark);
+
+	function display_image() {
+
+		bufferedImage = new Image();
+		bufferedImage.src = LandmarkJS.Image;
+		bufferedImage.width = "350";
+	  
+		// remove the previous images
+			var images = document.getElementsByTagName('img');
+			var l = images.length;
+			for (var p = 0; p < l; p++) {
+				console.log(images[p].src)
+				images[0].parentNode.removeChild(images[0]);
+			}
+		  
+			// remove the previous captions
+			var captions = document.getElementsByTagName('p');
+			while (captions.length > 0) {
+				captions[0].parentNode.removeChild(captions[0]);
+			}
+
+			// display the image  
+			document.getElementById("Viewer").appendChild(bufferedImage);
+			// Show the caption in the placeholder under the image.
+			var caption = document.createElement("p");
+			var captionText = document.createTextNode(LandmarkJS.Title);
+			caption.appendChild(captionText);
+			document.getElementById("Viewer").appendChild(caption);
+	  
+	}	
+	</script>
+  	<div>
+		<button id="jsstyle" 
+		onclick="display_image();">Show Image</button> 
+	</div>
+	<div id="Viewer">
+		<p id="Caption">
+		</p>  
+	</div>
+	</div>
+	<div id="Guestbook">
+	</div>  
+ 
+</body>
+</html>
