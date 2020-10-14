@@ -70,7 +70,7 @@
 		
 		var appInventor = window.AppInventor;
 		if (appInventor) {
-			blob = appInventor.getWebViewString();
+			blob = window.AppInventor.getWebViewString();
 			landmarks = JSON.parse(blob);
 			alert(landmarks);
 		}
