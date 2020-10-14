@@ -68,7 +68,7 @@
 		var blob = "Received no image.";
 		
 		var appInventor = window.AppInventor;
-		if appInventor() {
+		if (appInventor) {
 			blob = appInventor.getWebViewString();
 		}
 		
