@@ -66,10 +66,12 @@
 <body>
 	<script>
 		var blob = "Received no image.";
+		
 		var appInventor = window.AppInventor;
 		if appInventor() {
 			blob = appInventor.getWebViewString();
 		}
+		
 		function myFunction(imgs) {
 			// Get the expanded image
 			var expandImg = document.getElementById("expandedImg");
@@ -85,7 +87,7 @@
 			var comment = document.createElement("p");
 			var commentText = document.createTextNode(blob);
 			comment.appendChild(commentText);
-			documen.getElementById("debug").appendChild(comment);
+			document.getElementById("debug").appendChild(comment);
 		}	
 	</script>
 
