@@ -65,6 +65,11 @@
 </head>
 <body>
 	<script>
+		var blob = "Received no image.";
+		var appInventor = window.AppInventor;
+		if appInventor() {
+			blob = appInventor.getWebViewString();
+		}
 		function myFunction(imgs) {
 			// Get the expanded image
 			var expandImg = document.getElementById("expandedImg");
@@ -76,6 +81,11 @@
 			imgText.innerHTML = imgs.alt;
 			// Show the container element (hidden with CSS)
 			expandImg.parentElement.style.display = "block";
+			
+			var comment = document.createElement("p");
+			var commentText = document.createTextNode(blob);
+			comment.appendChild(commentText);
+			documen.getElementById("debug").appendChild(comment);
 		}	
 	</script>
 
@@ -94,6 +104,8 @@
 			<img src="https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FOttomanGarden.jpeg?alt=media&token=04771b9e-eba8-4620-8513-e41af73965c7" alt="Ottoman Garden" style="width:100%" onclick="myFunction(this);">
 		</div>
 	</div>
+	<div id="debug"></div>
+	
 
 <!-- The expanding image container -->
 	<div class="container">
