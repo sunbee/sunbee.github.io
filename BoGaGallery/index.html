@@ -73,6 +73,12 @@
 		}
 		
 		function myFunction(imgs) {
+			// Remove serialized JSON from WebViewer for debugging
+			var debugPrintStatements = document.getElementsByTagName("p");
+			while (debugPrintStatements.length > 0) {
+				debugPrintStatements[0].getParent.removeChild(debugPrintStatements[0]);
+			}
+			
 			// Get the expanded image
 			var expandImg = document.getElementById("expandedImg");
 			// Get the image text
@@ -84,6 +90,7 @@
 			// Show the container element (hidden with CSS)
 			expandImg.parentElement.style.display = "block";
 			
+			// Print serialized JSON from WebViewer for debugging
 			var comment = document.createElement("p");
 			var commentText = document.createTextNode(blob);
 			comment.appendChild(commentText);
