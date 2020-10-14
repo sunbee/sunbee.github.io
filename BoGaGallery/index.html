@@ -66,10 +66,13 @@
 <body>
 	<script>
 		var blob = "Received no image.";
+		var landmarks = [];
 		
 		var appInventor = window.AppInventor;
 		if (appInventor) {
 			blob = appInventor.getWebViewString();
+			landmarks = JSON.parse(blob);
+			alert(landmarks);
 		}
 		
 		function myFunction(imgs) {
