@@ -76,7 +76,7 @@
 			// Remove serialized JSON from WebViewer for debugging
 			var debugPrintStatements = document.getElementsByTagName("p");
 			while (debugPrintStatements.length > 0) {
-				debugPrintStatements[0].getParent.removeChild(debugPrintStatements[0]);
+				debugPrintStatements[0].parentNode.removeChild(debugPrintStatements[0]);
 			}
 			
 			// Get the expanded image
