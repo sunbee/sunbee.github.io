@@ -65,56 +65,61 @@
 </head>
 <body>
 	<script>
-		var blob = "Received no image.";
-		var landmarks = [];
+		var blob = '{"GladneyRoseGarden":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FGladneyRoseGarden.jpeg?alt=media&token=1663d2c7-a352-470f-9cb4-aec386692e07","Title":"Gladney Rose Garden"},"LinneanHouse":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FLinneanHouse.jpeg?alt=media&token=ebacde5d-630f-4f72-b8ed-d98f12793425","Nearby":["MagnoliaGrove","GladneyRoseGarden","OttomanGarden"],"Title":"Linnean House"},"MagnoliaGrove":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FMagnoliaGrove.jpeg?alt=media&token=b684972b-689d-48e3-b20f-c0395a87fc89","Title":"Magnolia Grove"},"OttomanGarden":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FOttomanGarden.jpeg?alt=media&token=04771b9e-eba8-4620-8513-e41af73965c7","Title":"Ottoman Garden"}}';
+		var landmarks;
 		
 		var appInventor = window.AppInventor;
 		if (appInventor) {
 			blob = window.AppInventor.getWebViewString();
-			landmarks = JSON.parse(blob);
-			alert(landmarks);
+		}
+		landmarks = JSON.parse(blob);
+
+	Object.keys(landmarks).forEach((key, index) => {
+		console.log("Got: "+ key + " - " + index + " - " + landmarks[key].Image);
+		// Create buffered image with src
+		var bufferedImage = new Image();
+		bufferedImage.src = landmarks[key].Image;
+		bufferedImage.alt = landmarks[key].Title;
+		bufferedImage.style.width ="100%";
+		bufferedImage.addEventListener('click', myFunction);
+		// Add a div tag with class column
+		var div = document.createElement('div');
+		div.className = 'column';
+		document.getElementsByClassName('row')[0].appendChild(div);
+		// Add the image
+		document.getElementsByClassName('column')[index].appendChild(bufferedImage);
+	});
+		
+    function myFunction(e) {
+		imgs = e.currentTarget;
+		// Remove serialized JSON from WebViewer for debugging
+		var debugPrintStatements = document.getElementsByTagName("p");
+		while (debugPrintStatements.length > 0) {
+			debugPrintStatements[0].parentNode.removeChild(debugPrintStatements[0]);
 		}
 		
-		function myFunction(imgs) {
-			// Remove serialized JSON from WebViewer for debugging
-			var debugPrintStatements = document.getElementsByTagName("p");
-			while (debugPrintStatements.length > 0) {
-				debugPrintStatements[0].parentNode.removeChild(debugPrintStatements[0]);
-			}
+		// Get the expanded image
+		var expandImg = document.getElementById("expandedImg");
+		// Get the image text
+		var imgText = document.getElementById("imgtext");
+		// Use the same src in the expanded image as the image being clicked on from the grid
+		expandImg.src = imgs.src;
+		// Use the value of the alt attribute of the clickable image as text inside the expanded image
+		imgText.innerHTML = imgs.alt;
+		// Show the container element (hidden with CSS)
+		expandImg.parentElement.style.display = "block";
 			
-			// Get the expanded image
-			var expandImg = document.getElementById("expandedImg");
-			// Get the image text
-			var imgText = document.getElementById("imgtext");
-			// Use the same src in the expanded image as the image being clicked on from the grid
-			expandImg.src = imgs.src;
-			// Use the value of the alt attribute of the clickable image as text inside the expanded image
-			imgText.innerHTML = imgs.alt;
-			// Show the container element (hidden with CSS)
-			expandImg.parentElement.style.display = "block";
-			
-			// Print serialized JSON from WebViewer for debugging
-			var comment = document.createElement("p");
-			var commentText = document.createTextNode(blob);
-			comment.appendChild(commentText);
-			document.getElementById("debug").appendChild(comment);
-		}	
+		// Print serialized JSON from WebViewer for debugging
+		console.log(landmarks.GladneyRoseGarden.Image);
+		var comment = document.createElement("p");
+		var commentText = document.createTextNode(Object.keys(landmarks));
+		comment.appendChild(commentText);
+		document.getElementById("debug").appendChild(comment);
+	}	
 	</script>
 
 	<!-- The grid: four columns -->
 	<div class="row">
-		<div class="column">
-			<img src="https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FLinneanHouse.jpeg?alt=media&token=ebacde5d-630f-4f72-b8ed-d98f12793425"  alt="Linnean House" style="width:100%" onclick="myFunction(this);">
-		</div>
-		<div class="column">
-			<img src="https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FGladneyRoseGarden.jpeg?alt=media&token=1663d2c7-a352-470f-9cb4-aec386692e07" alt="Gladney Rose Garden" style="width:100%" onclick="myFunction(this);">
-		</div>
-		<div class="column">
-			<img src="https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FMagnoliaGrove.jpeg?alt=media&token=b684972b-689d-48e3-b20f-c0395a87fc89" alt="Magnolia Grove" style="width:100%" onclick="myFunction(this);">
-		</div>
-		<div class="column">
-			<img src="https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FOttomanGarden.jpeg?alt=media&token=04771b9e-eba8-4620-8513-e41af73965c7" alt="Ottoman Garden" style="width:100%" onclick="myFunction(this);">
-		</div>
 	</div>
 	<div id="debug"></div>
 	
