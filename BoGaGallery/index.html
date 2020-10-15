@@ -64,6 +64,24 @@
 	</style>
 </head>
 <body>
+	<!-- The grid: four columns -->
+	<div class="row">
+	</div>
+	<div id="debug"></div>
+	
+
+<!-- The expanding image container -->
+	<div class="container">
+		<!-- Close the image -->
+		<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+		<!-- Expanded image -->
+		<img id="expandedImg" style="width:100%">
+
+		<!-- Image text -->
+	<div id="imgtext"></div>
+	</div>
+
 	<script>
 		var blob = '{"GladneyRoseGarden":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FGladneyRoseGarden.jpeg?alt=media&token=1663d2c7-a352-470f-9cb4-aec386692e07","Title":"Gladney Rose Garden"},"LinneanHouse":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FLinneanHouse.jpeg?alt=media&token=ebacde5d-630f-4f72-b8ed-d98f12793425","Nearby":["MagnoliaGrove","GladneyRoseGarden","OttomanGarden"],"Title":"Linnean House"},"MagnoliaGrove":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FMagnoliaGrove.jpeg?alt=media&token=b684972b-689d-48e3-b20f-c0395a87fc89","Title":"Magnolia Grove"},"OttomanGarden":{"Image":"https://firebasestorage.googleapis.com/v0/b/shiva-923e9.appspot.com/o/BoGaGallery%2FOttomanGarden.jpeg?alt=media&token=04771b9e-eba8-4620-8513-e41af73965c7","Title":"Ottoman Garden"}}';
 		var landmarks;
@@ -117,24 +135,5 @@
 		document.getElementById("debug").appendChild(comment);
 	}	
 	</script>
-
-	<!-- The grid: four columns -->
-	<div class="row">
-	</div>
-	<div id="debug"></div>
-	
-
-<!-- The expanding image container -->
-	<div class="container">
-		<!-- Close the image -->
-		<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-
-		<!-- Expanded image -->
-		<img id="expandedImg" style="width:100%">
-
-		<!-- Image text -->
-	<div id="imgtext"></div>
-	</div>
-
 </body>
 </html>
