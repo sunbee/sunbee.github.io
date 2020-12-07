@@ -19,6 +19,14 @@
 	</p>
 
 	<script>
+	var remark = "";
+
+	var appInventor = window.AppInventor; 
+	if (appInventor) {
+		remark = window.AppInventor.getWebViewString();
+		alert(remark);
+	} 
+		 
 	const url = "https://api.cloudinary.com/v1_1/demo/image/upload";
 	const form = document.querySelector("form");
 
