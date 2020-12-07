@@ -34,10 +34,15 @@
 		e.preventDefault();
 
 		const files = document.querySelector("[type=file]").files;
+		if (remark) {
+			files.push(remark);
+		} 
 		const formData = new FormData();
+
 
 		for (let i = 0; i < files.length; i++) {
 			let file = files[i];
+			alert(file);
 			formData.append("file", file);
 			formData.append("upload_preset", "docs_upload_example_us_preset");
 
