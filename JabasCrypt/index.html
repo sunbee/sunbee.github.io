@@ -13,7 +13,7 @@
     var appInventorInput = window.AppInventor.getWebViewString();
         function processJavascript() {
         if (appInventorInput.length > 0) {
-            document.write("WebView InputString received FROM app:" + appInventorInput );
+            document.write("WebView InputString received FROM app:<br/>" + appInventorInput );
             result = appInventorInput.split("").reverse().join("");
             document.write( "<p/>WebView InputString sending BACK TO app:<br/>" + result );
         } else {
