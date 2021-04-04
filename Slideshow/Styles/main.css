@@ -1,0 +1,59 @@
+body {
+    font-family: Calibri, sans-serif;
+    font-size: 1.2em;
+    background-color: #F7C193;
+}
+
+#Header {
+    text-align: center;
+    color:#5D2F07;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+  
+#Quiz, #Controls {
+    position: relative;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    padding: 9px;
+    background-color: #AA6D39;
+    color: #100800;
+    oveflow: scroll;
+}
+  
+#Controls {
+    text-align: center;
+}
+button {
+    padding: 3px;
+    margin-bottom: 7px;
+}
+  
+.collapsible {
+    background-color: #5D2F07;
+    color: white;
+    cursor: pointer;
+    padding: 7px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+  
+.active, .collapsible:hover {
+    background-color: #100800;
+}
+  
+.content {
+    padding: 0 7px;
+    display: none;
+    overflow: hidden;
+    background-color: #FFECDB;
+    color: #100800;
+}
+  
