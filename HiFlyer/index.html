@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Craft With Code.</title>
+	<style type="text/css">
+	body {margin-top: 30px;}
+	</style> 
+</head>
+<body>
+    <style>
+        body {
+            background-color: #53D1FF;
+            color: #9E80FF;
+            font-family: "Helvetica", sans-serif;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p h1 h2 h3 h4 {
+            color: #C1AEFF;
+        }
+
+        .Callout h2 {
+            color: #C1AEFF;
+        }
+
+        .Callout p {
+            color: #C1AEFF;
+        }
+
+        #inner-wrapper {
+            background-color: #531DFF;
+        }
+
+        #shoutout h2 {
+            text-align: center;
+        }
+
+        #shoutout h3 {
+            text-align: right;
+        }
+
+        #box {
+            background-color: #eee;
+            width: 650px;
+            margin: 0 auto;
+        }
+
+        #wrapper {
+            background-color: #fff;
+            margin: 12px;
+            border: 2px solid gray;
+        }
+
+        .Callout {
+            padding: 6px 3px;
+            color: cornflower;
+        }
+
+        #header {
+            background-color: #1B0073;
+            color: #9E80FF;
+            padding: 1px 1px;
+            margin: 0px 0px;
+            font-size: small;
+        }
+
+        #inner-wrapper {
+            position: relative;
+            height: 600px;
+        }
+
+        #shoutout {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 70%;
+            background-color: #9E80FF;
+            margin: 0px 1px;
+            padding: 6px 12px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 18% 100%);
+            z-index: 3;
+        }
+
+        #shoutout h1, h2 {
+            color: lightgray;
+        }
+
+        #shoutout h3 {
+            color: black;
+        }
+
+        #QRC {
+            background-image: url("https://dl.dropboxusercontent.com/s/fizyjc7e69x115k/Home.png");
+            position: absolute;
+            right: 1%;
+            top: 1%;
+            width: 100px;
+            height: 100px;
+            z-index: 5;
+        }
+
+        #lpane {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 49%;
+            height: 72%;
+            margin: 0px 0px 0px 1%;
+            padding: 6px;
+        }
+
+        #dividerpane {
+            position: absolute;
+            left: 50%;
+            bottom: 6%;
+            width: 21%;
+            z-index: 3;
+        }
+
+        #rpane {
+            background-image: url("https://community.appinventor.mit.edu/uploads/default/original/2X/5/552e3e499a89dcca67fa27827dd9f5778c0334c9.png");
+            -webkit-filter: blur(4px);
+            filter: blur(4px);
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            width: 40%;
+            height: 100%;
+            margin: 0px 1% 0px 0px;
+            z-index: 1;
+        }
+
+        #silhouette {
+            background-image: url("https://dl.dropboxusercontent.com/s/fy64efe80ff1on6/silhouette_vector_left.png");
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            width: 250px;
+            height: 150px;
+            z-index: 5;
+        }
+
+        .trapezoid-out {
+            height: 120px;
+            width: 120px;
+            box-sizing: border-box;
+            background-color: gray;
+            -webkit-clip-path: polygon(0 0, 100% 18%, 100% 72%, 0% 100%);
+            clip-path: polygon(0 0, 100% 18%, 100% 72%, 0% 100%);
+        }
+
+        .trapezoid-in {
+            height: 120px;
+            width: 120px;
+            box-sizing: border-box;
+            background-color: red;
+            -webkit-clip-path: clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 72%);
+            clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 72%);
+        }
+
+        .trapezoid-out img {
+            top: 2px;
+            left: 2px;
+            height: 116px;
+            width: 116px;
+            -webkit-clip-path: polygon(0 0, 100% 18%, 100% 72%, 0% 100%);
+            clip-path: polygon(0 0, 100% 18%, 100% 72%, 0% 100%);
+        }
+
+        .trapezoid-in img {
+            top: 2px;
+            left: 2px;
+            height: 116px;
+            width: 116px;
+            -webkit-clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 72%);
+            clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 72%);
+        }
+
+        #footer {
+            background-color: #9E80FF;
+            color: black;
+            text-align: center;
+            font-size: medium;
+        }
+    </style>
+    
+    <div id="box">
+        <div id="wrapper">
+            <div id="header">
+                <p>FREE YOUR MIND • INVENT AN APP • EXPLORE AI , IOT & CLOUD • BUILD A PORTFOLIO • MAKE A DIFFERENCE • BELONG TO A COOL COMMUNITY • ALL THIS AND MORE AS YOU LEARN TO CODE</p>
+            </div>
+            <div id="inner-wrapper">
+                <div id="shoutout">
+                <h1>CRAFT WITH CODE</h1>
+                <h2>BUILD MOBILE APPS</h2>
+                <h3>WITH MIT'S APP INVENTOR</h3>
+                </div>
+                <div id="QRC"></div>
+                <div id="lpane">        
+                    <div class="Callout Create"><p><h2>CREATE</h2>Build and share Android apps that exercise creativity on a coding canvas.
+              </p></div>
+      
+                    <div class="Callout Connect">
+              <p><h2>CONNECT</h2>Connect with the important problems of the day and the technologies to solve them – AI, IoT & Cloud.</p></div>
+      
+                    <div class="Callout Collaborate">
+              <p><h2>COLLABORATE</h2>Acquire collaborative skills for today’s agile workforce by giving and taking help and building on ideas.</p></div>
+                </div>
+                <div id="dividerpane">
+                    <div id="img-create" class="trapezoid-out"><img src="https://gtaphotographyclasses.com/wp-content/uploads/2017/01/d857032f6ac4f5b7c9156aaee19ce847.jpg"></div>
+                    <div id="img-connect" class="trapezoid-in"><img src="https://image.flaticon.com/icons/png/512/141/141044.png"></div>
+                    <div id="img-collaborate" class="trapezoid-out"><img src="https://images.idgesg.net/images/article/2018/01/teamwork_collaborate_share_meeting_best-practices-100745864-medium.jpg"></div>
+                </div>
+                <div id="rpane">
+                </div>
+                <div id="silhouette"></div>
+            </div>
+            <div id="footer"><br>Email me: <a href="mailto:ozwizard@engineer.com?subject=I'm interested!&body=Please send details about Craft with Code. Regards,">ozwizard@engineer.com</a><br><br></div>
+        </div>
+    </div>
+</body>
