@@ -16,8 +16,9 @@
                 var newNodes = mutation.addedNodes; // DOM NodeList
                 alert("Detected DOM insertion: " + newNodes.length);
                 if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
+                    alert("IF Got node!");
                     newNodes.each( (newNode) => {
-                        alert("Added: " + newNode);
+                        alert("EACH node is " + newNode.nodeType);
                     });
                 }
             });
