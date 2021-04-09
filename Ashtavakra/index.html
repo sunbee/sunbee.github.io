@@ -10,44 +10,41 @@
 
 <body>
     <script>
+        // Create an observer instance
+        var observer = new MutationObserver( (mutations) => {
+            mutations.forEach( (mutation) => {
+                var newNodes = mutation.addedNodes; // DOM NodeList
+                alert("Detected DOM insertion.");
+                if(newNodes !== undefined && newNodes.length !== 0) { // If there are new nodes added
+                    newNodes.each( (newNode) => {
+                        alert("Added: " + newNode);
+                    });
+                }
+            });
+        });
+
+        // Configuration of the observer:
+        var config = { 
+            attributes: true, 
+            childList: true, 
+            subtree: true 
+        };
+        
+        // The node to be monitored
+        var target = document;
+
+        // Pass in the target node, as well as the observer options
+        observer.observe(target, config);
+
         document.addEventListener('DOMContentLoaded', () => {
             var plug = "Howdy, WebViewer!";
             var appInventor = window.AppInventor; 
             if (appInventor) { // Do this when js is processed in AppInventor.
                 plug = window.AppInventor.getWebViewString();
             } 
-            alert("Got: " + plug);
+            // alert("Got: " + plug);
             document.getElementById("Question").innerHTML = plug;
-
-            // The node to be monitored
-            var target = document;
-
-            // Create an observer instance
-            var observer = new MutationObserver( (mutations) => {
-                mutations.forEach( (mutation) => {
-                    var newNodes = mutation.addedNodes; // DOM NodeList
-                    alert("Detected DOM inseration.");
-                    if(newNodes !== undefined && newNodes.length !== 0) { // If there are new nodes added
-                        newNodes.each( (newNode) => {
-                            alert("Added: " + newNode);
-                        });
-                    }
-                });
-            });
-
-            // Configuration of the observer:
-            var config = { 
-                attributes: true, 
-                childList: true, 
-                characterData: true 
-            };
-
-            // Pass in the target node, as well as the observer options
-            observer.observe(target, config);
-        });
-
- 
- 
+        }); 
     </script>
     <div id="Slide">
         <div id="Header"><h1>Quiz Time!</h1></div>
