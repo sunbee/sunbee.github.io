@@ -19,6 +19,10 @@
             alert("Got: " + plug);
             document.getElementById("Question").innerHTML = plug;
         });
+
+        document.on('DOMNodeInserted', (e) => {
+            alert("Inserted: " + e.target);
+        });
     </script>
     <div id="Slide">
         <div id="Header"><h1>Quiz Time!</h1></div>
