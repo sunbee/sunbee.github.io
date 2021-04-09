@@ -18,32 +18,34 @@
             } 
             alert("Got: " + plug);
             document.getElementById("Question").innerHTML = plug;
-        });
 
-        // The node to be monitored
-        var target = document.getElementById("Question");
+            // The node to be monitored
+            var target = document.getElementById("Question");
 
-        // Create an observer instance
-        var observer = new MutationObserver( (mutations) => {
-            mutations.forEach( (mutation) => {
-                var newNodes = mutation.addedNodes; // DOM NodeList
-                if(newNodes !== null) { // If there are new nodes added
-                    newNodes.each( (newNode) => {
-                        alert("Added: " + newNode);
-                    });
-                }
+            // Create an observer instance
+            var observer = new MutationObserver( (mutations) => {
+                mutations.forEach( (mutation) => {
+                    var newNodes = mutation.addedNodes; // DOM NodeList
+                    if(newNodes !== null) { // If there are new nodes added
+                        newNodes.each( (newNode) => {
+                            alert("Added: " + newNode);
+                        });
+                    }
+                });
             });
+
+            // Configuration of the observer:
+            var config = { 
+                attributes: true, 
+                childList: true, 
+                characterData: true 
+            };
+
+            // Pass in the target node, as well as the observer options
+            observer.observe(target, config);
         });
 
-        // Configuration of the observer:
-        var config = { 
-            attributes: true, 
-            childList: true, 
-            characterData: true 
-        };
-        
-        // Pass in the target node, as well as the observer options
-        observer.observe(target, config);
+ 
  
     </script>
     <div id="Slide">
