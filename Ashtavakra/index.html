@@ -10,13 +10,15 @@
 
 <body>
     <script>
-        var plug = "Howdy, WebViewer!";
-        var appInventor = window.AppInventor; 
-        if (appInventor) { // Do this when js is processed in AppInventor.
-            plug = window.AppInventor.getWebViewString();
-        } 
-        alert("Got: " + plug);
-        document.getElementById("Question").innerHTML = "Hi";
+        document.addEventListener('DOMContentLoaded', () => {
+            var plug = "Howdy, WebViewer!";
+            var appInventor = window.AppInventor; 
+            if (appInventor) { // Do this when js is processed in AppInventor.
+                plug = window.AppInventor.getWebViewString();
+            } 
+            alert("Got: " + plug);
+            document.getElementById("Question").innerHTML = "Hi";
+        });
     </script>
     <div id="Slide">
         <div id="Header"><h1>Quiz Time!</h1></div>
