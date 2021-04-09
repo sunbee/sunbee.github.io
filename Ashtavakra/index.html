@@ -17,7 +17,7 @@
                 alert("Detected DOM insertion: " + newNodes.length);
                 if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
                     alert("IF Got node!");
-                    newNodes.each( (newNode) => {
+                    newNodes.forEach( (newNode) => {
                         alert("EACH node is " + newNode.nodeType);
                     });
                 }
