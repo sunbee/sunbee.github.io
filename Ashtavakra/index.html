@@ -20,9 +20,35 @@
             document.getElementById("Question").innerHTML = plug;
         });
 
-        document.on('DOMNodeInserted', (e) => {
-            alert("Inserted: " + e.target);
+        // The node to be monitored
+        var target = document.getElementById("Question");
+
+        // Create an observer instance
+        var observer = new MutationObserver(function( mutations ) {
+        mutations.forEach(function( mutation ) {
+            var newNodes = mutation.addedNodes; // DOM NodeList
+            if( newNodes !== null ) { // If there are new nodes added
+                var $nodes = $( newNodes ); // jQuery set
+                $nodes.each(function() {
+                    var $node = $( this );
+                    if( $node.hasClass( "message" ) ) {
+                        // do something
+                    }
+                });
+            }
+        });    
         });
+
+        // Configuration of the observer:
+        var config = { 
+            attributes: true, 
+            childList: true, 
+            characterData: true 
+        };
+        
+        // Pass in the target node, as well as the observer options
+        observer.observe(target, config);
+ 
     </script>
     <div id="Slide">
         <div id="Header"><h1>Quiz Time!</h1></div>
