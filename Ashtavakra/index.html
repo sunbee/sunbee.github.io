@@ -26,7 +26,7 @@
             var observer = new MutationObserver( (mutations) => {
                 mutations.forEach( (mutation) => {
                     var newNodes = mutation.addedNodes; // DOM NodeList
-                    if(newNodes !== null) { // If there are new nodes added
+                    if(newNodes !== undefined && newNodes.length !== 0) { // If there are new nodes added
                         newNodes.each( (newNode) => {
                             alert("Added: " + newNode);
                         });
