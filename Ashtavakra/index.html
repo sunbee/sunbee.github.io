@@ -22,7 +22,7 @@
                         description += newNode.nodeName + " | value: ";
                         description += newNode.nodeValue + " | ID: ";
                         description += newNode.id;
-                        //alert("EACH:  " + description);
+                        alert("EACH:  " + description);
                     });
                 }
             });
@@ -37,7 +37,7 @@
         };
         
         // The node to be monitored
-        var target = document;
+        var target = document.getElementById("Question"); // document;
 
         // Pass in the target node, as well as the observer options
         observer.observe(target, config);
