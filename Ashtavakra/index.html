@@ -35,12 +35,6 @@
             childList: true, 
             subtree: true 
         };
-        
-        // The node to be monitored
-        var target = document.getElementById("Question"); // document;
-
-        // Pass in the target node, as well as the observer options
-        observer.observe(target, config);
 
         document.addEventListener('DOMContentLoaded', () => {
             var plug = "Howdy, WebViewer!";
@@ -50,6 +44,12 @@
             } 
             // alert("Got: " + plug);
             document.getElementById("Question").innerHTML = plug;
+
+            // The node to be monitored
+            var target = document.getElementById("Question"); // document;
+
+            // Pass in the target node, as well as the observer options
+            observer.observe(target, config);
         }); 
     </script>
     <div id="Slide">
