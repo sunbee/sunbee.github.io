@@ -6,7 +6,7 @@ export class Observable {
 	}
 
 	subscribe(listener) {
-		this._listeners.push(listener)
+		this._listeners.push(listener);
 	}
 
 	notify() {
