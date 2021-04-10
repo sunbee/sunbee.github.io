@@ -1,3 +1,9 @@
+/*
+Based on the know-how for Single-Page Applications in vanilla Javascript
+(VanillaJS) and HTML 5 popularized by Jeremy Likness.
+
+See: https://blog.jeremylikness.com/blog/build-a-spa-site-with-vanillajs/
+ */
 class Observable {
     constructor(value) {
         this._value = value;
@@ -102,25 +108,16 @@ function makeBindings() {
 
 // Create an observer instance
 var observer = new MutationObserver( (mutations) => {
-    mutations.forEach( (mutation) => {
-        var newNodes = mutation.addedNodes; // DOM NodeList
-        if (newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
-            newNodes.forEach( (newNode) => {
-                var description = "name: " + newNode.nodeName;
-                if (newNode.id) {
-                    description += " | ID: " + newNode.id;
-                }
-                // Check: Put container node under observation for DOM changes.
-                // alert("Added: " + description);
-            });
-        }
-    });
-    // Check: Inserted HTML nodes from quiz file.
-    // alert(document.getElementById("Expected").getAttributeNames()); 
+    /*
+    Observe the target node and upon injection of nodes,
+    make the data-bindings for responsive UX.
+    Invocation of `makeBindings()` is the only required part.
+    See: https://www.w3docs.com/learn-javascript/mutation-observer.html
+    */
     makeBindings();
 });
 
-// Configuration of the observer:
+// Configure the observer:
 var config = { 
     attributes: true, 
     childList: true, 
@@ -134,9 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         plug = window.AppInventor.getWebViewString();
     } 
 
-    // The node to be monitored
-    var target = document.getElementById("Question"); /// The node to be monitored
-    // Pass in the target node, as well as the observer options
+    // Select the node to observe for DOM changes
+    var target = document.getElementById("Question"); 
     observer.observe(target, config);            
 
     document.getElementById("Question").innerHTML = plug;
