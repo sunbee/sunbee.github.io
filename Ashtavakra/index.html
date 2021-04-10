@@ -42,14 +42,15 @@
             if (appInventor) { // Do this when js is processed in AppInventor.
                 plug = window.AppInventor.getWebViewString();
             } 
-            // alert("Got: " + plug);
-            document.getElementById("Question").innerHTML = plug;
 
             // The node to be monitored
-            var target = document.getElementById("Slide"); // document;
-
+            var target = document.getElementById("Question"); /// The node to be monitored
             // Pass in the target node, as well as the observer options
-            observer.observe(target, config);
+            observer.observe(target, config);            
+
+            document.getElementById("Question").innerHTML = plug;
+
+
         }); 
     </script>
     <div id="Slide">
