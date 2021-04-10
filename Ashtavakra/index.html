@@ -17,11 +17,10 @@
                 //alert("Detected DOM insertion: " + newNodes.length);
                 if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
                     newNodes.forEach( (newNode) => {
-                        var description = "type: ";
-                        description += newNode.nodeType + " | name: ";
-                        description += newNode.nodeName + " | value: ";
-                        description += newNode.nodeValue + " | ID: ";
-                        description += newNode.id;
+                        var description = "name: " + newNode.nodeName;
+                        if (newNode.id) {
+                            description += " | ID: " + newNode.id;
+                        }
                         alert("EACH:  " + description);
                     });
                 }
