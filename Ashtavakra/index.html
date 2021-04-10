@@ -36,10 +36,51 @@
             }
         } 
 
-        let protagonist = new Observable("Joker!");
-        protagonist.subscribe((val) => console.log(`Protagonist changed to ${val}`));
-        protagonist.value = "Zhankar";
-        console.log(protagonist.value);
+        class Computed extends Observable {
+            constructor (computer, dependents) {
+                super(computer());	// Initialize computed value 
+                                    // by call to constructor of Observable class
+                const listener = (_) => {
+                    /*
+                    Helper function, corrals all dependents 
+                    (which are Observable instances,) and 
+                    recomputes the computed value, then
+                    notifies any listeners.
+                    Note that 'listeners' property is inherited
+                    from parent Observable class, hence the chaining effect.
+                    */
+                    console.log('Listener in Computed got ' + _);
+                    this._value = computer();
+                    this.notify();  // Notify listeners of 'this' instance 
+                                // of Computed class
+
+                }
+                dependents.forEach(dependent => dependent.subscribe(listener));    
+            }
+
+            get value() {
+                return this._value;
+            }
+
+            set value(_) {
+                /*
+                Raise an exception, the value is computed from dependents, 
+                not set.
+                */
+                throw "Set no computed property.";
+            }
+
+        }
+
+        var first_name = new Observable("Dalai");
+        var second_name = new Observable("Lama");
+
+        var full_name = new Computed(() => `HH ${first_name.value} ${second_name.value}`, [first_name, second_name]);
+        full_name.subscribe((val) => console.log(`The HH changed to ${val}`)); // Chaining
+
+        first_name.value = "Panchen";
+        first_name.value = "Vishnu";
+        first_name.value = "Vishnu";
 
         // Create an observer instance
         var observer = new MutationObserver( (mutations) => {
