@@ -3,7 +3,7 @@ Based on the know-how for Single-Page Applications in vanilla Javascript
 (VanillaJS) and HTML 5 popularized by Jeremy Likness.
 
 See: https://blog.jeremylikness.com/blog/build-a-spa-site-with-vanillajs/
- */
+*/
 class Observable {
     constructor(value) {
         this._value = value;
@@ -106,6 +106,16 @@ function makeBindings() {
     });
 };
 
+var elaborate = () => {
+	document.getElementById("Elaboration").addEventListener("click", () => {
+		if (document.getElementById('Content').style.display == 'block') {
+			document.getElementById('Content') .style.display='none'
+		} else {
+			document.getElementById('Content') .style.display='block'
+		}  
+	});	  
+}
+
 // Create an observer instance
 var observer = new MutationObserver( (mutations) => {
     /*
@@ -115,6 +125,7 @@ var observer = new MutationObserver( (mutations) => {
     See: https://www.w3docs.com/learn-javascript/mutation-observer.html
     */
     makeBindings();
+    elaborate();
 });
 
 // Configure the observer:
@@ -123,6 +134,8 @@ var config = {
     childList: true, 
     subtree: true 
 };
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     var plug = "Howdy, WebViewer!";
