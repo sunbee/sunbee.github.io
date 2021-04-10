@@ -117,17 +117,19 @@
         var observer = new MutationObserver( (mutations) => {
             mutations.forEach( (mutation) => {
                 var newNodes = mutation.addedNodes; // DOM NodeList
-                if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
+                if (newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
                     newNodes.forEach( (newNode) => {
                         var description = "name: " + newNode.nodeName;
                         if (newNode.id) {
                             description += " | ID: " + newNode.id;
                         }
-                        alert("Added: " + description);
+                        // Check: Put container node under observation for DOM changes.
+                        // alert("Added: " + description);
                     });
                 }
             });
-            alert(document.getElementById("Expected").getAttributeNames());
+            // Check: Inserted HTML nodes from quiz file.
+            // alert(document.getElementById("Expected").getAttributeNames()); 
             makeBindings();
         });
 
