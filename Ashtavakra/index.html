@@ -14,14 +14,13 @@
         var observer = new MutationObserver( (mutations) => {
             mutations.forEach( (mutation) => {
                 var newNodes = mutation.addedNodes; // DOM NodeList
-                //alert("Detected DOM insertion: " + newNodes.length);
                 if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
                     newNodes.forEach( (newNode) => {
                         var description = "name: " + newNode.nodeName;
                         if (newNode.id) {
                             description += " | ID: " + newNode.id;
                         }
-                        alert("EACH:  " + description);
+                        alert("Added: " + description);
                     });
                 }
             });
