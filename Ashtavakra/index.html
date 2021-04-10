@@ -15,11 +15,15 @@
             mutations.forEach( (mutation) => {
                 var newNodes = mutation.addedNodes; // DOM NodeList
                 alert("Detected DOM insertion: " + newNodes.length);
-                
+
                 if(newNodes !== undefined && newNodes.length > 0) { // If there are new nodes added
                     newNodes.forEach( (newNode) => {
-                        alert("EACH node is - type: " + newNode.nodeType + " | name: " 
-                                                      + newNode.nodeName + " | value: " + newNode.nodeValue);
+                        var description = "type: ";
+                        description += newNode.nodeType + " | name: ";
+                        description += newNode.nodeName + " | value: ";
+                        description += newNode.nodeValue + " | ID: ";
+                        description += newNode.id;
+                        alert("EACH:  " + description);
                     });
                 }
             });
