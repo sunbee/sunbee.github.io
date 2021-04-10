@@ -10,6 +10,37 @@
 
 <body>
     <script>
+        class Observable {
+            constructor(value) {
+                this._value = value;
+                this._listeners = [];   
+            }
+
+            subscribe(listener) {
+                this._listeners.push(listener);
+            }
+
+            notify() {
+                this._listeners.forEach(listener => listener(this._value));
+            }
+
+            get value() {
+                return this._value;
+            }
+
+            set value(val) {
+                if (this._value != val) {
+                this._value = val;
+                this.notify();
+                }
+            }
+        } 
+
+        let protagonist = new Observable("Joker!");
+        protagonist.subscribe((val) => console.log(`Protagonist changed to ${val}`));
+        protagonist.value = "Zhankar";
+        console.log(protagonist.value);
+
         // Create an observer instance
         var observer = new MutationObserver( (mutations) => {
             mutations.forEach( (mutation) => {
