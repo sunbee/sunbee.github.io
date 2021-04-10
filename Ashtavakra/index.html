@@ -22,10 +22,11 @@
                         description += newNode.nodeName + " | value: ";
                         description += newNode.nodeValue + " | ID: ";
                         description += newNode.id;
-                        alert("EACH:  " + description);
+                        //alert("EACH:  " + description);
                     });
                 }
             });
+            alert(document.getElementById("Expected").getAttributeNames());
         });
 
         // Configuration of the observer:
