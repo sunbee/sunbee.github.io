@@ -14,7 +14,7 @@
         var number_discs = window.AppInventor.getWebViewString();
         if (!number_discs) {
             number_discs = 3;
-            console.log("AI2 sent no info!")
+            alert("AI2 sent no info!")
         } 
         function processJS() { // Wrapper for onload event of page
             hanoi = (n, a, b, c) => { // Recursive function
@@ -27,7 +27,7 @@
                 .map(d => d[0] + '>' + d[1])
                 .join('|');
             window.AppInventor.setWebViewString(result);
-            console.log(result);
+            alert(result);
         }
     </script>
 </body>
