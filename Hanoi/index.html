@@ -14,7 +14,7 @@
         var number_discs = window.AppInventor.getWebViewString();
         if (!number_discs) {
             number_discs = 3;
-            alert("AI2 sent no info!")
+            console.log("AI2 sent no info!")
         } 
         processJS = () => { // Wrapper, run on pageload event
             hanoi = (n, a, b, c) => { // Recursive function
