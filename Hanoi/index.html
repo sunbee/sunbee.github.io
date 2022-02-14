@@ -16,7 +16,7 @@
             number_discs = 3;
             console.log("AI2 sent no info!")
         } 
-        processJS = () => { // Wrapper, run on pageload event
+        function processJS() { // Wrapper for onload event of page
             hanoi = (n, a, b, c) => { // Recursive function
                 return n ? hanoi(n-1, a, c, b)
                     .concat([[a, b]])
