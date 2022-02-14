@@ -16,7 +16,7 @@
         if (!number_discs) {
             number_discs = 3;
         } 
-        processJS = () => { // Wrapper for onload event of page
+        function processJS() { // Wrapper for onload event of page
             hanoi = (n, a, b, c) => { // Recursive function
                 return n ? hanoi(n-1, a, c, b)
                     .concat([[a, b]])
