@@ -12,6 +12,7 @@
 
     <script>
         var number_discs = window.AppInventor.getWebViewString();
+        var result = "None";
         if (!number_discs) {
             number_discs = 3;
         } 
@@ -22,10 +23,10 @@
                     .concat(hanoi(n-1, b, c, a)) : [];
             }
             // Invoke solver, format result, pass to AI2
-            window.AppInventor.setWebViewString(
-                hanoi(number_discs, 'A', 'B', 'C') 
-                    .map(d => d[0] + '>' + d[1])
-                    .join('|'));
+            result = hanoi(number_discs, 'A', 'B', 'C') 
+                .map(d => d[0] + '>' + d[1])
+                .join('|');
+            window.AppInventor.setWebViewString( result );
         }
     </script>
 </body>
