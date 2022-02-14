@@ -23,7 +23,7 @@
                     .concat(hanoi(n-1, b, c, a)) : [];
             }
             // Invoke solver, format result, pass to AI2
-            result = hanoi(number_discs, 'A', 'B', 'C') 
+            var result = hanoi(number_discs, 'A', 'B', 'C') 
                 .map(d => d[0] + '>' + d[1])
                 .join('|');
             window.AppInventor.setWebViewString(result);
