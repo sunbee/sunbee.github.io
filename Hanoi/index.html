@@ -14,20 +14,18 @@
         var number_discs = window.AppInventor.getWebViewString();
         if (!number_discs) {
             number_discs = 3;
-            alert("AI2 sent no info!")
         } 
-        function processJS() { // Wrapper for onload event of page
+        processJS = () => { // Wrapper for onload event of page
             hanoi = (n, a, b, c) => { // Recursive function
                 return n ? hanoi(n-1, a, c, b)
                     .concat([[a, b]])
                     .concat(hanoi(n-1, b, c, a)) : [];
             }
             // Invoke solver, format result, pass to AI2
-            var result = hanoi(number_discs, 'A', 'B', 'C') 
-                .map(d => d[0] + '>' + d[1])
-                .join('|');
-            window.AppInventor.setWebViewString(result);
-            alert(result);
+            window.AppInventor.setWebViewString(
+                hanoi(number_discs, 'A', 'B', 'C') 
+                    .map(d => d[0] + '>' + d[1])
+                    .join('|');
         }
     </script>
 </body>
