@@ -20,7 +20,7 @@
             function hanoi(n, a, b, c) { // Recursive function
                 return n ? hanoi(n-1, a, c, b)
                     .concat([[a, b]])
-                    .concat(hanoi(n-1, b, c, a)) : [];
+                    .concat(hanoi(n-1, c, b, a)) : [];
             }
             // Invoke solver, format result, pass to AI2
             result = hanoi(number_discs, 'A', 'B', 'C') 
