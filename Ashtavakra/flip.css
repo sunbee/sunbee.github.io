@@ -1,12 +1,12 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #EFC7B7;
 }
 
 .classy-wrapper {
     width: 100%;
     padding: 25px;
     text-align: center;
+    background-color: #EFC7B7;
 }
 
 .classy {
